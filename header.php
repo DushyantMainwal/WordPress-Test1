@@ -19,10 +19,14 @@
         <h2><a href="<?php echo home_url() ?>"><?php bloginfo('name') ?></a></h2>
         <h5><?php bloginfo('description') ?></h5>
 
+        <?php if (is_page('custom')) { ?>
+            -ghh hjv h hv
+        <?php } ?>
+
         <nav class="site-nav">
             <?php $my_args = array(
-                        'theme_location' => 'primary'
-                ); ?>
+                'theme_location' => 'primary'
+            ); ?>
 
             <?php wp_nav_menu($my_args) ?>
         </nav>
