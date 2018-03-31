@@ -19,7 +19,7 @@ if (have_posts()):
 
             </p>
 
-            <p class="awesome"><?php the_excerpt() ?></p>
+            <p class="awesome"><?php the_content() ?></p>
         </article>
 
     <?php endwhile;
