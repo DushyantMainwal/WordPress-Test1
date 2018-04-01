@@ -11,7 +11,7 @@ if (have_posts()):
 
         <article class="post">
 
-<!--            //has children or child itself-->
+            <!--            //has children or child itself-->
             <?php if (has_children() OR $post->post_parent > 0) { ?>
 
                 <nav class="site-nav">
@@ -40,6 +40,8 @@ if (have_posts()):
             <?php } ?>
 
             <h3><?php the_title() ?></h3>
+
+            <img src="<?php the_post_thumbnail() ?>">
 
             <p class="awesome"><?php the_content() ?></p>
         </article>

@@ -86,3 +86,9 @@ article.post:last-of-type {
     background-color: #22b460;
     color: white;
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 100px;
+}

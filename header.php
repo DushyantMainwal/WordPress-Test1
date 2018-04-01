@@ -19,6 +19,10 @@
         <h2><a href="<?php echo home_url() ?>"><?php bloginfo('name') ?></a></h2>
         <h5><?php bloginfo('description') ?></h5>
 
+        <div style="float: right">
+            <?php get_search_form(); ?>
+        </div>
+
         <?php if (is_page('custom')) { ?>
             -ghh hjv h hv
         <?php } ?>

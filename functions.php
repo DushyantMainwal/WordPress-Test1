@@ -38,3 +38,17 @@ function has_children()
     $pages = get_pages('child_of=' . $post->ID);
     return count($pages);
 }
+
+
+//Theme Setup
+function learningWordpress_setup()
+{
+    //Add Feature Image Support
+    add_theme_support('post-thumbnails');
+    add_theme_support('html5', array('search-form'));
+    add_theme_support('post-formats', array('aside', 'gallery', 'link'));
+    add_image_size('small-thumbnail', 280, 160, true);
+    add_image_size('banner-image', 1000, 200, array('left', 'top'));
+}
+
+add_action('after_setup_theme', 'learningWordpress_setup');
