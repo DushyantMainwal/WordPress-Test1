@@ -7,7 +7,7 @@ if (postButton) {
     postButton.addEventListener("click", function () {
             console.log('Post Button Clicked');
             var ourRequest = new XMLHttpRequest();
-            ourRequest.open('GET', 'http://localhost/wordpress/wp-json/wp/v2/posts?categories=1&order=asc');
+            ourRequest.open('GET', magicalData.siteUrl + '/wp-json/wp/v2/posts?categories=1&order=asc');
             ourRequest.onload = function () {
                 if (ourRequest.status >= 200 && ourRequest.status < 400) {
                     var data = JSON.parse(ourRequest.responseText);
@@ -38,3 +38,36 @@ function createHTML(data) {
 
     postDivContainer.innerHTML = ourHTMLString;
 }
+
+
+//Quick ADD POST AJAX
+var quickAddButton = document.querySelector("#quick-add-button");
+if (quickAddButton) {
+    quickAddButton.addEventListener("click", function () {
+        var ourPostData = {
+            "title": document.querySelector('.admin-quick-add [name="title"]').value,
+            "content": document.querySelector('.admin-quick-add [name="content"]').value,
+            "status": "publish"
+        }
+
+        var createPost = new XMLHttpRequest();
+        createPost.open("POST", magicalData.siteUrl + "/wp-json/wp/v2/posts");
+        createPost.setRequestHeader("X-WP-Nonce", magicalData.nonce)
+        createPost.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+        createPost.send(JSON.stringify(ourPostData));
+
+        createPost.onreadystatechange = function () {
+            if (createPost.readyState == 4) {
+                if (createPost.status == 201) {
+                    document.querySelector('.admin-quick-add [name="title"]').value = ""
+                    document.querySelector('.admin-quick-add [name="content"]').value = ""
+                } else {
+                    alert("Try Again: Error");
+                }
+            }
+        }
+    });
+}
+
+
+

@@ -12,6 +12,10 @@ function styleTest_resources()
     wp_enqueue_script('dush_js',
         get_template_directory_uri() . '/js/main.js',
         null, 1.0, true);
+    wp_localize_script('dush_js', 'magicalData', array(
+        'nonce' => wp_create_nonce('wp_rest'),
+        'siteUrl' => get_site_url()
+    ));
 }
 
 add_action('wp_enqueue_scripts', 'styleTest_resources');
